@@ -61,10 +61,10 @@ const cloth:{
     size:'medium'
 }
 
-function add(num1: number, num2: number):number{
-    return num1 + num2
-}
-add(2,3);
+// function add(num1: number, num2: number):number{
+//     return num1 + num2
+// }
+// add(2,3);
 
 function sayHello(){
     console.log('Hello');
@@ -72,7 +72,7 @@ function sayHello(){
 
 const anotherAdd: (n1:number,n2:number) => number = add;
 
-const doubleNumber = number => number * 2;
+//const doubleNumber = number => number * 2;
 
 //callback関数
 function doubleAndHandle(num:number,cb:(num:number) => number){
