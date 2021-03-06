@@ -43,15 +43,15 @@ var cloth = {
     color: 'white',
     size: 'medium'
 };
-function add(num1, num2) {
-    return num1 + num2;
-}
-add(2, 3);
+// function add(num1: number, num2: number):number{
+//     return num1 + num2
+// }
+// add(2,3);
 function sayHello() {
     console.log('Hello');
 }
 var anotherAdd = add;
-var doubleNumber = function (number) { return number * 2; };
+//const doubleNumber = number => number * 2;
 //callback関数
 function doubleAndHandle(num, cb) {
     var doubleNum = cb(num * 2);
