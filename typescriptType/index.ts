@@ -20,3 +20,52 @@ const sample: any[] = ['a',1,'d'];
 
 //タプル
 const book:[string,number,boolean] = ['business',1500,false];
+
+//列挙型
+enum CoffeeSize {
+    SHORT = 'SHORT',
+    TALL = 'TALL',
+    GRANDE = 'GRANDE',
+    VENTI = 'VENTI'
+}
+
+const coffee = {
+    hot:true,
+    size:CoffeeSize.SHORT
+}
+
+let anything: any = true;
+anything = 'hello';
+anything = {};
+
+//Unionタイプ
+let unionType:number | string;
+unionType = 'hello';
+unionType.toUpperCase();
+
+//Literal型：特定の型のみを扱う
+//constで定義する
+const apple:'apple' = 'apple';
+const num: 0 = 0;
+
+//typeエイリアス
+type ClothSize = 'small' | 'large' | 'medium';
+//Literalの使い道(Unionとの組み合わせ)
+let clothSize: ClothSize = 'small';
+
+const cloth:{
+    color:string,
+    size:ClothSize
+} = {
+    color: 'white',
+    size:'medium'
+}
+
+function add(num1: number, num2: number):number{
+    return num1 + num2
+}
+add(2,3);
+
+function sayHello(){
+    console.log('Hello');
+}
