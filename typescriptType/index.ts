@@ -99,3 +99,14 @@ if(typeof unknownInput === 'string'){
     text = unknownInput
 }
 
+//never型:決して何も返さない型
+//無限ループやErrorを投げる時に使える
+function error(message:string):never{
+    //throw new Error(message);
+    while(true){
+
+    }
+}
+
+
+
