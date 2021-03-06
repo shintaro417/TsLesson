@@ -1,3 +1,4 @@
+"use strict";
 var hasValue = true;
 //numberは浮動小数点
 var count = 10;
@@ -29,7 +30,7 @@ var anything = true;
 anything = 'hello';
 anything = {};
 //Unionタイプ
-var unionType = 10;
+var unionType;
 unionType = 'hello';
 unionType.toUpperCase();
 //Literal型：特定の型のみを扱う
@@ -42,3 +43,40 @@ var cloth = {
     color: 'white',
     size: 'medium'
 };
+function add(num1, num2) {
+    return num1 + num2;
+}
+add(2, 3);
+function sayHello() {
+    console.log('Hello');
+}
+var anotherAdd = add;
+var doubleNumber = function (number) { return number * 2; };
+//callback関数
+function doubleAndHandle(num, cb) {
+    var doubleNum = cb(num * 2);
+    console.log(num * 2);
+}
+doubleAndHandle(21, function (doubleNum) {
+    return doubleNum;
+});
+//unknown型
+var unknownInput;
+var anyInput;
+var text;
+unknownInput = 'hello';
+unknownInput = 21;
+unknownInput = true;
+//他の型に代入することができない
+//text = unknownInput;
+//代入したい場合
+if (typeof unknownInput === 'string') {
+    text = unknownInput;
+}
+//never型:決して何も返さない型
+//無限ループやErrorを投げる時に使える
+function error(message) {
+    //throw new Error(message);
+    while (true) {
+    }
+}

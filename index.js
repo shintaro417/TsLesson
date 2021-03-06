@@ -1,3 +1,4 @@
+"use strict";
 var ts = "typescript";
 console.log(ts);
 // TypeScriptを使うと関数の使い方が誰がみても分かる→ドキュメントとして使える。(分かりやすくコードを書ける。)
