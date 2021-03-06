@@ -82,3 +82,20 @@ function doubleAndHandle(num:number,cb:(num:number) => number){
 doubleAndHandle(21,doubleNum => {
     return doubleNum;
 })
+
+//unknown型
+let unknownInput:unknown;
+let anyInput:any;
+let text: string
+unknownInput = 'hello';
+unknownInput = 21;
+unknownInput = true;
+
+//他の型に代入することができない
+//text = unknownInput;
+
+//代入したい場合
+if(typeof unknownInput === 'string'){
+    text = unknownInput
+}
+
