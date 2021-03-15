@@ -14,12 +14,27 @@ class Person{
 
 let person2 = Person;
 const quil = new Person('Quil',38);
-quil.incrementAge();
-quil.greeting();
+// quil.incrementAge();
+// quil.greeting();
 
 
 class Teacher extends Person{
-    constructor(name:string,age:number,public subject:string){
+    /**getterとsetterは同じ関数名を命名することができる */
+    get subject(){
+        if(!this._subject){
+            throw new Error('There is no subject');
+        }
+        return 'Music';
+    }
+
+    //value:getの返り値を推定して型を変換してくれる。
+    set subject(value){
+        if(!value){
+            throw new Error('There is no value');
+        }
+        this._subject = value;
+    }
+    constructor(name:string,age:number,private _subject:string){
         super(name,age);
     }
 

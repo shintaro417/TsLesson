@@ -34,10 +34,15 @@ quil.incrementAge();
 quil.greeting();
 var Teacher = /** @class */ (function (_super) {
     __extends(Teacher, _super);
-    function Teacher() {
-        return _super !== null && _super.apply(this, arguments) || this;
+    function Teacher(name, age, subject) {
+        var _this = _super.call(this, name, age) || this;
+        _this.subject = subject;
+        return _this;
     }
+    Teacher.prototype.greeting = function () {
+        console.log("Hello My name is " + this.name + ". I am " + this.age + " years old. I teach " + this.subject);
+    };
     return Teacher;
 }(Person));
-var teacher = new Person('Quil', 38);
+var teacher = new Teacher('Quil', 38, 'Math');
 teacher.greeting();
