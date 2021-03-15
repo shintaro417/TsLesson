@@ -1,13 +1,8 @@
 class Person{
-    //フィールド
-    public name:string;
-    private age:number;
-    constructor(initName:string,initAge:number){
-        this.name = initName;
-        this.age = initAge;
+    constructor(public name:string,private age:number){
     }
 
-    private incrementAge(){
+    incrementAge(){
         this.age += 1;
     }
 
@@ -18,10 +13,20 @@ class Person{
 }
 
 let person2 = Person;
-const quil = new Person('Quile',32);
-quil.greeting;
-const anotherQuil = {
-    name:'anotherQuil',
-    anotherGreeting:quil.greeting
+const quil = new Person('Quil',38);
+quil.incrementAge();
+quil.greeting();
+
+
+class Teacher extends Person{
+    constructor(name:string,age:number,public subject:string){
+        super(name,age);
+    }
+
+    greeting(){
+        console.log(`Hello My name is ${this.name}. I am ${this.age} years old. I teach ${this.subject}`);
+    }
 }
-anotherQuil.anotherGreeting;
+
+const teacher = new Teacher('Quil',38,'Math');
+teacher.greeting();
