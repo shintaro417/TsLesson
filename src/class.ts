@@ -1,4 +1,4 @@
-class Person{
+abstract class Person{
     static speices = 'Homo sapiens';
     static isAdult(age:number){
         if(age > 17)return true;
@@ -14,22 +14,30 @@ class Person{
     //スコープ外でも値を保持し続けることができる。
     greeting(this:Person){
         console.log(`Hello My name is ${this.name}. I am ${this.age} years old`);
+        this.explainJob();
     }
+
+    abstract explainJob():void;
 }
 
+
+
 let person2 = Person;
-const quil = new Person('Quil',38);
+// const quil = new Person('Quil',38);
 // quil.incrementAge();
 // quil.greeting();
 
 
 class Teacher extends Person{
+    explainJob(){
+        console.log(`I am teacher. I teach ${this.subject}.`)
+    }
     /**getterとsetterは同じ関数名を命名することができる */
     get subject(){
         if(!this._subject){
             throw new Error('There is no subject');
         }
-        return 'Music';
+        return this._subject;
     }
 
     //value:getの返り値を推定して型を変換してくれる。
@@ -43,12 +51,10 @@ class Teacher extends Person{
         super(name,age);
     }
 
-    greeting(){
-        console.log(`Hello My name is ${this.name}. I am ${this.age} years old. I teach ${this.subject}`);
-    }
+    // greeting(){
+    //     console.log(`Hello My name is ${this.name}. I am ${this.age} years old. I teach ${this.subject}`);
+    // }
 }
 
 const teacher = new Teacher('Quil',38,'Math');
 teacher.greeting();
-
-console.log(Person.isAdult(24));

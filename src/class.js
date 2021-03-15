@@ -30,12 +30,13 @@ var Person = /** @class */ (function () {
     //スコープ外でも値を保持し続けることができる。
     Person.prototype.greeting = function () {
         console.log("Hello My name is " + this.name + ". I am " + this.age + " years old");
+        this.explainJob();
     };
     Person.speices = 'Homo sapiens';
     return Person;
 }());
 var person2 = Person;
-var quil = new Person('Quil', 38);
+// const quil = new Person('Quil',38);
 // quil.incrementAge();
 // quil.greeting();
 var Teacher = /** @class */ (function (_super) {
@@ -45,13 +46,16 @@ var Teacher = /** @class */ (function (_super) {
         _this._subject = _subject;
         return _this;
     }
+    Teacher.prototype.explainJob = function () {
+        console.log("I am teacher. I teach " + this.subject + ".");
+    };
     Object.defineProperty(Teacher.prototype, "subject", {
         /**getterとsetterは同じ関数名を命名することができる */
         get: function () {
             if (!this._subject) {
                 throw new Error('There is no subject');
             }
-            return 'Music';
+            return this._subject;
         },
         //value:getの返り値を推定して型を変換してくれる。
         set: function (value) {
@@ -63,11 +67,7 @@ var Teacher = /** @class */ (function (_super) {
         enumerable: false,
         configurable: true
     });
-    Teacher.prototype.greeting = function () {
-        console.log("Hello My name is " + this.name + ". I am " + this.age + " years old. I teach " + this.subject);
-    };
     return Teacher;
 }(Person));
 var teacher = new Teacher('Quil', 38, 'Math');
 teacher.greeting();
-console.log(Person.isAdult(24));
