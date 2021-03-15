@@ -19,6 +19,11 @@ var Person = /** @class */ (function () {
         this.name = name;
         this.age = age;
     }
+    Person.isAdult = function (age) {
+        if (age > 17)
+            return true;
+        return false;
+    };
     Person.prototype.incrementAge = function () {
         this.age += 1;
     };
@@ -26,19 +31,38 @@ var Person = /** @class */ (function () {
     Person.prototype.greeting = function () {
         console.log("Hello My name is " + this.name + ". I am " + this.age + " years old");
     };
+    Person.speices = 'Homo sapiens';
     return Person;
 }());
 var person2 = Person;
 var quil = new Person('Quil', 38);
-quil.incrementAge();
-quil.greeting();
+// quil.incrementAge();
+// quil.greeting();
 var Teacher = /** @class */ (function (_super) {
     __extends(Teacher, _super);
-    function Teacher(name, age, subject) {
+    function Teacher(name, age, _subject) {
         var _this = _super.call(this, name, age) || this;
-        _this.subject = subject;
+        _this._subject = _subject;
         return _this;
     }
+    Object.defineProperty(Teacher.prototype, "subject", {
+        /**getterとsetterは同じ関数名を命名することができる */
+        get: function () {
+            if (!this._subject) {
+                throw new Error('There is no subject');
+            }
+            return 'Music';
+        },
+        //value:getの返り値を推定して型を変換してくれる。
+        set: function (value) {
+            if (!value) {
+                throw new Error('There is no value');
+            }
+            this._subject = value;
+        },
+        enumerable: false,
+        configurable: true
+    });
     Teacher.prototype.greeting = function () {
         console.log("Hello My name is " + this.name + ". I am " + this.age + " years old. I teach " + this.subject);
     };
@@ -46,3 +70,4 @@ var Teacher = /** @class */ (function (_super) {
 }(Person));
 var teacher = new Teacher('Quil', 38, 'Math');
 teacher.greeting();
+console.log(Person.isAdult(24));
