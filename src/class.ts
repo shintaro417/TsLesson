@@ -19,7 +19,7 @@ class Person{
 
 let person2 = Person;
 const quil = new Person('Quile',32);
-
+quil.greeting;
 const anotherQuil = {
     name:'anotherQuil',
     anotherGreeting:quil.greeting
