@@ -6,7 +6,7 @@ class Person{
     }
 
     //スコープ外でも値を保持し続けることができる。
-    greeting(this:{name:string}){
+    greeting(this:Person){
         console.log(`Hello My name is ${this.name}`);
     }
 }
@@ -14,3 +14,9 @@ class Person{
 const quil = new Person('Quill');
 console.log(quil);
 quil.greeting();
+
+const anotherQuil = {
+    name:'anotherQuil',
+    anotherGreeting:quil.greeting
+}
+anotherQuil.anotherGreeting;
