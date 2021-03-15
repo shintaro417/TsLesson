@@ -29,6 +29,8 @@ let person2 = Person;
 
 
 class Teacher extends Person{
+    //シングルトンパターン
+    private static instance: Teacher;
     explainJob(){
         console.log(`I am teacher. I teach ${this.subject}.`)
     }
@@ -47,8 +49,15 @@ class Teacher extends Person{
         }
         this._subject = value;
     }
-    constructor(name:string,age:number,private _subject:string){
+    //シングルトンパターン
+    private constructor(name:string,age:number,private _subject:string){
         super(name,age);
+    }
+
+    static getInstance(){
+        if(Teacher.instance) return Teacher.instance;
+        Teacher.instance =  new Teacher('Quil',38,'Math');
+        return Teacher.instance;
     }
 
     // greeting(){
@@ -56,5 +65,5 @@ class Teacher extends Person{
     // }
 }
 
-const teacher = new Teacher('Quil',38,'Math');
+const teacher = Teacher.getInstance();
 teacher.greeting();
