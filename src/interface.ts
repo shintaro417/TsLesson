@@ -9,11 +9,16 @@ addFunc = (n1:number,n2:number) => {
     return n1 + n2;
 }
 
-interface Namebale{
-    name:string;
+interface Nameable{
+    name?:string;
+    nickName?:string;
 }
 
-interface Human extends Namebale {
+const nameable:Nameable = {
+    name:'Quil'
+}
+
+interface Human extends Nameable {
     //readonly:参照のみ
     // readonly name:String;
     age:number;
@@ -22,10 +27,15 @@ interface Human extends Namebale {
     greeting(message:string):void;
 } 
 
-class Developer implements Human,Namebale{
+class Developer implements Human,Nameable{
+    name?:string
     //readOnlyかpublicのみ
-    constructor(public name:string,public age:number,public experience:number){}
-    greeting(message:string){
+    constructor(public age:number,public experience:number,public initNmae?:string){
+        if(initNmae){
+            this.name = initNmae;
+        }
+    }
+    greeting(message:string = 'hello'){
         console.log('Hello');
     }
 }
@@ -40,5 +50,7 @@ const tmpDeveloper = {
 }
 
 const user:Human = tmpDeveloper;
-let developer = new Developer('Quil',36,3);
-developer.name = 'aa';
+let developer = new Developer(38,3);
+if(user.name){
+    user.name.toUpperCase()
+}
