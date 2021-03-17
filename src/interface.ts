@@ -6,10 +6,21 @@ interface Human {
     greeting(message:string):void;
 } 
 
-const human:Human= {
-    name: 'Quil',
-    age: 38,
+class Developer implements Human{
+    //readOnlyかpublicのみ
+    constructor(public name:string,public age:number,public experience:number){}
     greeting(message:string){
-        console.log(message);
+        console.log('Hello');
     }
 }
+
+const tmpDeveloper = {
+    name: 'Quil',
+    age:38,
+    experience:3,
+    greeting(message:string){
+        console.log('Hello');
+    }
+}
+
+const user:Human = tmpDeveloper;
