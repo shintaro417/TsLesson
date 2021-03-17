@@ -41,6 +41,7 @@ var person2 = Person;
 // quil.greeting();
 var Teacher = /** @class */ (function (_super) {
     __extends(Teacher, _super);
+    //シングルトンパターン
     function Teacher(name, age, _subject) {
         var _this = _super.call(this, name, age) || this;
         _this._subject = _subject;
@@ -67,7 +68,13 @@ var Teacher = /** @class */ (function (_super) {
         enumerable: false,
         configurable: true
     });
+    Teacher.getInstance = function () {
+        if (Teacher.instance)
+            return Teacher.instance;
+        Teacher.instance = new Teacher('Quil', 38, 'Math');
+        return Teacher.instance;
+    };
     return Teacher;
 }(Person));
-var teacher = new Teacher('Quil', 38, 'Math');
+var teacher = Teacher.getInstance();
 teacher.greeting();

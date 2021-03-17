@@ -26,3 +26,49 @@ type StringNumber = string | number;
 
 //AND演算子が型になる
 type Mix = NumberBoolean & StringNumber;
+
+//type guard:条件文を使って型を絞り込む(3つほどある)
+function toUpperCase(x:string | number){
+    //typeofの戻り値は7個くらいしかない
+    if(typeof x === 'string'){
+        return x.toUpperCase();
+    }
+
+    return '';
+}
+
+type NomadoWorker = Engineer | Blogger;
+function describeProfile(nomadoWorker:NomadoWorker){
+    console.log(nomadoWorker.name);
+    //in演算子:特定のオブジェクト型を特定する時に有用
+    if('role' in nomadoWorker){
+        console.log(nomadoWorker.role);
+    }
+    if('follower' in nomadoWorker){
+        console.log(nomadoWorker.follower);
+    }
+}
+
+class Dog{
+    bark(){
+        console.log('bow-bow');
+    }
+}
+
+class Bird{
+    bark(){
+        console.log('tweet');
+    }
+    fly(){
+        console.log('flutter');
+    }
+}
+
+type Pet = Dog | Bird;
+function havPet(pet:Pet){
+    pet.bark();
+    //instanceof:変数の型を絞り込む
+    if(pet instanceof Bird){
+        pet.fly();
+    }
+}
