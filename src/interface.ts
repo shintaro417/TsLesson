@@ -1,3 +1,14 @@
+//type AddFunc = (num1:number,num2:number) => number;
+//非推奨
+interface AddFunc{
+    //メソッド名を書かない=関数の型を定義したのと同義
+    (num1:number,num2:number):number;
+}
+let addFunc : AddFunc;
+addFunc = (n1:number,n2:number) => {
+    return n1 + n2;
+}
+
 interface Namebale{
     name:string;
 }
