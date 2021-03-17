@@ -1,13 +1,17 @@
-interface Human {
+interface Namebale{
+    name:string;
+}
+
+interface Human extends Namebale {
     //readonly:参照のみ
-    readonly name:String;
+    // readonly name:String;
     age:number;
     //greeting:(message:string) => void;
     //オブジェクト内でのみ使える
     greeting(message:string):void;
 } 
 
-class Developer implements Human{
+class Developer implements Human,Namebale{
     //readOnlyかpublicのみ
     constructor(public name:string,public age:number,public experience:number){}
     greeting(message:string){
