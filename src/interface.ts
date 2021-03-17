@@ -1,5 +1,6 @@
 interface Human {
-    name:String;
+    //readonly:参照のみ
+    readonly name:String;
     age:number;
     //greeting:(message:string) => void;
     //オブジェクト内でのみ使える
@@ -24,3 +25,5 @@ const tmpDeveloper = {
 }
 
 const user:Human = tmpDeveloper;
+let developer = new Developer('Quil',36,3);
+developer.name = 'aa';
