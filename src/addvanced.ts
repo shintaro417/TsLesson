@@ -83,3 +83,8 @@ function havPet(pet:Pet){
         pet.fly();
     }
 }
+
+//HTMLElementは抽象的だから手動で型を変える必要がある。->型アサーションか後に asをつける(Reactを使わない人向け)
+// const input = <HTMLInputElement>document.getElementById('input');
+// const input2 = document.getElementById('input') as HTMLInputElement
+(<HTMLInputElement>document.getElementById('input')).value = 'initial input';
