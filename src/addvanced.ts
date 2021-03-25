@@ -91,3 +91,21 @@ function havPet(pet:Pet){
 
 //None-null assertion operater->nullではないことを確定させる。->!を使う
 const input = document.getElementById('input')!;
+
+//インデックスシグネチャ->オブジェクトのメンバを追加できる機能
+interface Designer{
+    name:string
+    //インデックスシグネチャの文法
+    //->メンバ内の型は全てインデックスシグネチャの型に統一する。
+    //->index内の型は自由
+    [index:string]:string
+}
+
+const designer:Designer = {
+    name:'Quil',
+    role:'web',
+}
+
+console.log(designer.role);
+
+
