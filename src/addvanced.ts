@@ -50,12 +50,15 @@ function describeProfile(nomadoWorker:NomadoWorker){
 }
 
 class Dog{
+    //タグつけ
+    kind:'dog' = 'dog'
     bark(){
         console.log('bow-bow');
     }
 }
 
 class Bird{
+    kind:'bird' = 'bird'
     bark(){
         console.log('tweet');
     }
@@ -67,7 +70,15 @@ class Bird{
 type Pet = Dog | Bird;
 function havPet(pet:Pet){
     pet.bark();
-    //instanceof:変数の型を絞り込む
+    switch(pet.kind){
+        case 'bird':
+            pet.fly;
+            break;
+        case 'dog':
+            pet.bark;
+            break;
+    }
+    //instanceof:変数の型を絞り込む。interfaceは使えない
     if(pet instanceof Bird){
         pet.fly();
     }
