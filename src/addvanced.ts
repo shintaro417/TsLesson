@@ -88,3 +88,6 @@ function havPet(pet:Pet){
 // const input = <HTMLInputElement>document.getElementById('input');
 // const input2 = document.getElementById('input') as HTMLInputElement
 (<HTMLInputElement>document.getElementById('input')).value = 'initial input';
+
+//None-null assertion operater->nullではないことを確定させる。->!を使う
+const input = document.getElementById('input')!;
