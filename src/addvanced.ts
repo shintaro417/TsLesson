@@ -131,3 +131,6 @@ const downLoadedData: DownLoadedData = {
 
 //Optional Chaining->undefinedであった場合にエラーを防ぐ処理
 console.log(downLoadedData.user?.name?.firstName);
+
+//Nullish Coalescing->undefined/nullかそれ以外かで処理を分岐させる。(空文字 0はtrue扱い->or演算子とは違う)
+const userData = downLoadedData.user ?? 'no-user';
