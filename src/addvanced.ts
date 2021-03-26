@@ -40,8 +40,17 @@ function toUpperCase(x:string | number){
     return x;
 }
 
+interface TmpFunc{
+    (x:string):number;
+    (y:string):number;
+}
+//オーバーロードの全ての関数に対応した関数を入れなければならない。
+const upperHello :TmpFunc = function(x:string | number){return 0};
+//オーバーロードを型で表現する。->条件分岐が内部で行われている。
+//const upperHello = toUpperCase;
+
 //関数のオーバーロード->関数の戻り値をTSに正しく伝える。l30に記述
-const upperHello = toUpperCase('hello');
+//const upperHello = toUpperCase('hello');
 
 type NomadoWorker = Engineer | Blogger;
 function describeProfile(nomadoWorker:NomadoWorker){
@@ -136,3 +145,14 @@ console.log(downLoadedData.user?.name?.firstName);
 const userData = downLoadedData.user ?? 'no-user';
 //LookUp型
 type id = DownLoadedData["id" | "user"]
+
+//enum型と数字は互換性がある。
+//関数型では代入先の関数の引数によっては引数が無視されることもある。
+//Classではprivate/protected修飾子がある場合は互換性がなくなる。
+enum Color {
+    RED,
+    BLUE,
+}
+let target = Color.RED;
+let source = 100;
+target = source;
