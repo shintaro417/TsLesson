@@ -27,6 +27,9 @@ type StringNumber = string | number;
 //AND演算子が型になる
 type Mix = NumberBoolean & StringNumber;
 
+//関数のオーバーロードを実装した時点でオーバーロードされる側の関数は無視される。
+function toUpperCase(x:string):string;
+function toUpperCase(x:number):number;
 //type guard:条件文を使って型を絞り込む(3つほどある)
 function toUpperCase(x:string | number){
     //typeofの戻り値は7個くらいしかない
@@ -34,8 +37,11 @@ function toUpperCase(x:string | number){
         return x.toUpperCase();
     }
 
-    return '';
+    return x;
 }
+
+//関数のオーバーロード->関数の戻り値をTSに正しく伝える。l30に記述
+const upperHello = toUpperCase('hello');
 
 type NomadoWorker = Engineer | Blogger;
 function describeProfile(nomadoWorker:NomadoWorker){
