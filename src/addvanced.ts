@@ -115,3 +115,19 @@ const designer:Designer = {
 console.log(designer.role);
 
 
+interface DownLoadedData {
+    id:number;
+    user?:{
+        name?:{
+            firstName:string;
+            lastName:string;
+        }
+    }
+}
+
+const downLoadedData: DownLoadedData = {
+    id:1
+}
+
+//Optional Chaining->undefinedであった場合にエラーを防ぐ処理
+console.log(downLoadedData.user?.name?.firstName);
