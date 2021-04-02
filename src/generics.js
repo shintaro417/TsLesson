@@ -24,3 +24,6 @@ stringLightDatabase.add('banana');
 stringLightDatabase.add('grape');
 stringLightDatabase.remove('grape');
 console.log(stringLightDatabase.get());
+var tmp;
+var tmp2;
+var tmp3;
