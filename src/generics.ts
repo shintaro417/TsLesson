@@ -22,3 +22,11 @@ stringLightDatabase.add('banana');
 stringLightDatabase.add('grape');
 stringLightDatabase.remove('grape');
 console.log(stringLightDatabase.get());
+
+interface Todo{
+    title:string;
+    text:string;
+}
+
+type Todoable = Partial<Todo>
+type ReadTodo = Readonly<Todo>
