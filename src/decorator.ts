@@ -27,11 +27,30 @@ function Component(template:string,selector:string){
     }
 }
 
+function PropertyLogging(target:any,propertyKey:string){
+    console.log('propertyLoggin');
+    console.log(target);
+    console.log(propertyKey);
+}
+function MethodLogging(target:any,propertyKey:string,descreptor:PropertyDescriptor){
+    console.log('propertyLoggin');
+    console.log(target);
+    console.log(propertyKey);
+}
+
 @Component('<h1>{{ name }}</h1>','#app') //Userのnameに対応するようにする。index.htmlのid = appに代入する
 @Logging('Loggin User')
 class User{
+    @PropertyLogging
     name = 'aaa';
-    constructor(){
+    constructor(public age:number){
         console.log('User was created'!);
     }
+    @MethodLogging
+    greeting(){
+        console.log('Hello');
+    }
 }
+const user1 = new User(32);
+const user2 = new User(32);
+const user3 = new User(32);
