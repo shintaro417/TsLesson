@@ -30,3 +30,25 @@ interface Todo{
 
 type Todoable = Partial<Todo>
 type ReadTodo = Readonly<Todo>
+
+interface ResponceData<T extends {message:string} = any>{
+    data:T;
+    status:number;
+}
+
+let tmp:ResponceData;
+interface Vegitables{
+    tomato:string;
+    pumpkin:string;
+}
+
+type MappedTypes = {
+    [P in keyof Vegitables]:P
+}
+
+type ConditionalTypes = 'tomato' extends string ? number:boolean;
+type ConditionalInfer = {tomato:'tomato'} extends {tomato:infer R} ? R : boolean;
+type DistributiveConditionalTypes<T> = T extends 'tomato' ? number : boolean;
+let tmp2:DistributiveConditionalTypes<'tomato' | 'pumpkin'>;
+
+let tmp3:NonNullable<string | null>
