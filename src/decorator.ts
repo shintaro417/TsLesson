@@ -37,17 +37,45 @@ function MethodLogging(target:any,propertyKey:string,descreptor:PropertyDescript
     console.log(target);
     console.log(propertyKey);
 }
+function AccessorLogging(target:any,propertyKey:string,descreptor:PropertyDescriptor){
+    console.log('AccessorLoggin');
+    console.log(target);
+    console.log(propertyKey);
+}
+
+function ParamatorLogging(target:any,propertyKey:string,paramatorIndex:number){
+    console.log('ParamatorLoggin');
+    console.log(target);
+    console.log(propertyKey);
+}
+
+function Enumrable(isEnumrable:boolean){
+    return function(target:any,propertyKey:string,descriptor:PropertyDescriptor){
+        return {
+            enumrable:isEnumrable
+        }
+    }
+}
+
 
 @Component('<h1>{{ name }}</h1>','#app') //Userのnameに対応するようにする。index.htmlのid = appに代入する
 @Logging('Loggin User')
 class User{
     @PropertyLogging
     name = 'aaa';
-    constructor(public age:number){
+    constructor(private _age:number){
         console.log('User was created'!);
     }
+    @AccessorLogging
+    get(){
+        return this._age;
+    }
+    set(value:number){
+        this._age = value;
+    }
+    //@Enumrable(false)
     @MethodLogging
-    greeting(){
+    greeting(@ParamatorLogging message:string){
         console.log('Hello');
     }
 }
