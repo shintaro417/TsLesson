@@ -79,6 +79,3 @@ class User{
         console.log('Hello');
     }
 }
-const user1 = new User(32);
-const user2 = new User(32);
-const user3 = new User(32);

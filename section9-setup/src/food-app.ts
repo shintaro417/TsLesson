@@ -1,3 +1,3 @@
-class Score { }
-class Food { }
-class Foods { }
+// class Score { }
+// class Food { }
+// class Foods { }
