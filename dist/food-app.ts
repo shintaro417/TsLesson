@@ -1,11 +1,21 @@
-class Score{}
-//
+class Score{
+    get totalScore(){
+        const foods = new Foods();
+        return foods.activeElementsScore.reduce((total,score) => total + score, 0);
+    }
+    render(){
+        document.querySelector('.score__number')!.textContent = String(this.totalScore);
+    }
+}
+//Foodクラス
 class Food{
     constructor(public element:HTMLDivElement){
         element.addEventListener('click',this.clickEventHandler.bind(this)); //bindを使うことでthisを明示することができる。
     }
     clickEventHandler(){
         this.element.classList.toggle('food--active'); //指定したクラスがあった場合はクラスを付け足す。
+        const score = new Score();
+        score.render();
     }
 }
 //Foodクラスの一覧

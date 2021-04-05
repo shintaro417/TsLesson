@@ -1,9 +1,20 @@
 var Score = /** @class */ (function () {
     function Score() {
     }
+    Object.defineProperty(Score.prototype, "totalScore", {
+        get: function () {
+            var foods = new Foods();
+            return foods.activeElementsScore.reduce(function (total, score) { return total + score; }, 0);
+        },
+        enumerable: false,
+        configurable: true
+    });
+    Score.prototype.render = function () {
+        document.querySelector('.score__number').textContent = String(this.totalScore);
+    };
     return Score;
 }());
-//
+//Foodクラス
 var Food = /** @class */ (function () {
     function Food(element) {
         this.element = element;
@@ -11,6 +22,8 @@ var Food = /** @class */ (function () {
     }
     Food.prototype.clickEventHandler = function () {
         this.element.classList.toggle('food--active'); //指定したクラスがあった場合はクラスを付け足す。
+        var score = new Score();
+        score.render();
     };
     return Food;
 }());
