@@ -9,15 +9,14 @@ var __param = (this && this.__param) || function (paramIndex, decorator) {
     return function (target, key) { decorator(target, key, paramIndex); }
 };
 function Logging(message) {
-    return function (target) {
-        console.log('Logging..');
+    console.log('Logging Factory');
+    return function (constructor) {
         console.log(message);
+        console.log(constructor);
     };
 }
-// function Logging(target:Function){
-//     console.log('Logging..');
-// }
 function Component(template, selector) {
+    console.log('Component Factory');
     return function (constructor) {
         return class extends constructor {
             constructor(...args) {
@@ -34,47 +33,49 @@ function Component(template, selector) {
     };
 }
 function PropertyLogging(target, propertyKey) {
-    console.log('propertyLoggin');
+    console.log('propertyLogging');
     console.log(target);
     console.log(propertyKey);
 }
-function MethodLogging(target, propertyKey, descreptor) {
-    console.log('propertyLoggin');
+function MethodLogging(target, propertyKey, descriptor) {
+    console.log('MethodLogging');
     console.log(target);
     console.log(propertyKey);
+    console.log(descriptor);
 }
-function AccessorLogging(target, propertyKey, descreptor) {
-    console.log('AccessorLoggin');
-    console.log(target);
-    console.log(propertyKey);
-}
-function ParamatorLogging(target, propertyKey, paramatorIndex) {
-    console.log('ParamatorLoggin');
-    console.log(target);
-    console.log(propertyKey);
-}
-function Enumrable(isEnumrable) {
-    return function (target, propertyKey, descriptor) {
+function enumerable(isEnumerable) {
+    return function (_target, _propertyKey, _descriptor) {
         return {
-            enumrable: isEnumrable
+            enumerable: isEnumerable
         };
     };
+}
+function AccessorLogging(target, propertyKey, descriptor) {
+    console.log('AccessorLogging');
+    console.log(target);
+    console.log(propertyKey);
+    console.log(descriptor);
+}
+function ParameterLogging(target, propertyKey, parameterIndex) {
+    console.log('ParameterLogging');
+    console.log(target);
+    console.log(propertyKey);
+    console.log(parameterIndex);
 }
 let User = class User {
     constructor(_age) {
         this._age = _age;
-        this.name = 'aaa';
-        console.log('User was created');
+        this.name = 'Quill';
+        console.log('User was created!');
     }
-    get() {
+    get age() {
         return this._age;
     }
-    set(value) {
+    set age(value) {
         this._age = value;
     }
-    //@Enumrable(false)
     greeting(message) {
-        console.log('Hello');
+        console.log(message);
     }
 };
 __decorate([
@@ -82,13 +83,16 @@ __decorate([
 ], User.prototype, "name", void 0);
 __decorate([
     AccessorLogging
-], User.prototype, "get", null);
+], User.prototype, "age", null);
 __decorate([
+    enumerable(false),
     MethodLogging,
-    __param(0, ParamatorLogging)
+    __param(0, ParameterLogging)
 ], User.prototype, "greeting", null);
 User = __decorate([
-    Component('<h1>{{ name }}</h1>', '#app') //Userのnameに対応するようにする。index.htmlのid = appに代入する
-    ,
-    Logging('Loggin User')
+    Logging('Logging User'),
+    Component('<h1>{{ name }}</h1>', '#app')
 ], User);
+const user1 = new User(32);
+const user2 = new User(32);
+const user3 = new User(32);

@@ -1,19 +1,19 @@
 "use strict";
-var hasValue = true;
+let hasValue = true;
 //numberは浮動小数点
-var count = 10;
-var float = 3.14;
-var minus = -10;
+let count = 10;
+let float = 3.14;
+let minus = -10;
 //シングル、ダブル、バッククォート対応
-var single = 'hello';
-var person = {
+let single = 'hello';
+const person = {
     name: 'Jack',
     age: 21
 };
-var fruits = ['Apple', 'Banana', 'Grape'];
-var sample = ['a', 1, 'd'];
+const fruits = ['Apple', 'Banana', 'Grape'];
+const sample = ['a', 1, 'd'];
 //タプル
-var book = ['business', 1500, false];
+const book = ['business', 1500, false];
 //列挙型
 var CoffeeSize;
 (function (CoffeeSize) {
@@ -22,24 +22,24 @@ var CoffeeSize;
     CoffeeSize["GRANDE"] = "GRANDE";
     CoffeeSize["VENTI"] = "VENTI";
 })(CoffeeSize || (CoffeeSize = {}));
-var coffee = {
+const coffee = {
     hot: true,
     size: CoffeeSize.SHORT
 };
-var anything = true;
+let anything = true;
 anything = 'hello';
 anything = {};
 //Unionタイプ
-var unionType;
+let unionType;
 unionType = 'hello';
 unionType.toUpperCase();
 //Literal型：特定の型のみを扱う
 //constで定義する
-var apple = 'apple';
-var num = 0;
+const apple = 'apple';
+const num = 0;
 //Literalの使い道(Unionとの組み合わせ)
-var clothSize = 'small';
-var cloth = {
+let clothSize = 'small';
+const cloth = {
     color: 'white',
     size: 'medium'
 };
@@ -50,20 +50,20 @@ var cloth = {
 function sayHello() {
     console.log('Hello');
 }
-var anotherAdd = add;
+const anotherAdd = add;
 //const doubleNumber = number => number * 2;
 //callback関数
 function doubleAndHandle(num, cb) {
-    var doubleNum = cb(num * 2);
+    const doubleNum = cb(num * 2);
     console.log(num * 2);
 }
-doubleAndHandle(21, function (doubleNum) {
+doubleAndHandle(21, doubleNum => {
     return doubleNum;
 });
 //unknown型
-var unknownInput;
-var anyInput;
-var text;
+let unknownInput;
+let anyInput;
+let text;
 unknownInput = 'hello';
 unknownInput = 21;
 unknownInput = true;

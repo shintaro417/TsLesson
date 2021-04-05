@@ -12,46 +12,39 @@ class Person {
     incrementAge() {
         this.age += 1;
     }
-    //スコープ外でも値を保持し続けることができる。
     greeting() {
-        console.log(`Hello My name is ${this.name}. I am ${this.age} years old`);
+        console.log(`Hello! My name is ${this.name}. I am ${this.age} years old.`);
         this.explainJob();
     }
 }
-Person.speices = 'Homo sapiens';
-let person2 = Person;
-// const quil = new Person('Quil',38);
-// quil.incrementAge();
-// quil.greeting();
+Person.species = 'Homo sapiens';
 class Teacher extends Person {
-    //シングルトンパターン
     constructor(name, age, _subject) {
         super(name, age);
         this._subject = _subject;
     }
     explainJob() {
-        console.log(`I am teacher. I teach ${this.subject}.`);
+        console.log(`I am a teacher and I teach ${this.subject}.`);
     }
-    /**getterとsetterは同じ関数名を命名することができる */
     get subject() {
         if (!this._subject) {
-            throw new Error('There is no subject');
+            throw new Error('There is no subject.');
         }
         return this._subject;
     }
-    //value:getの返り値を推定して型を変換してくれる。
     set subject(value) {
         if (!value) {
-            throw new Error('There is no value');
+            throw new Error('There is no subject.');
         }
         this._subject = value;
     }
     static getInstance() {
         if (Teacher.instance)
             return Teacher.instance;
-        Teacher.instance = new Teacher('Quil', 38, 'Math');
+        Teacher.instance = new Teacher('Quill', 38, 'Math');
         return Teacher.instance;
     }
 }
 const teacher = Teacher.getInstance();
-teacher.greeting();
+const teacher2 = Teacher.getInstance();
+console.log(teacher, teacher2);
