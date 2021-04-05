@@ -11,8 +11,9 @@ class Food{
 //Foodクラスの一覧
 class Foods{
     elements = document.querySelectorAll<HTMLDivElement>('.food'); //クラスがfoodの要素を全て取得する。ジェネリクスで要素を指定できる。
-    //active状態のFoodを配列として取得する。
     private _activeElements:HTMLDivElement[] = [];
+    private _activeElementsScore:number[] = [];
+    //active状態のFoodを配列として取得する。
     get activeElements(){
         //初期化処理
         this._activeElements = [];
@@ -24,6 +25,18 @@ class Foods{
             
         })
         return this._activeElements;
+    }
+    //active状態のFoodのスコアを取得する。
+    get activeElementsScore(){
+        this._activeElementsScore = [];
+        this.activeElements.forEach(element => {
+            //数字が書いてある要素を取得する。
+            const foodScore = element.querySelector('.food__score');
+            if(foodScore){
+                this._activeElementsScore.push(Number(foodScore.textContent))
+            }
+        })
+        return this._activeElementsScore;
     }
     //各要素を取得する。
     constructor(){
